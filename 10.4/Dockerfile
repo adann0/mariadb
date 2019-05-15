@@ -1,7 +1,8 @@
 # vim:set ft=dockerfile:
-FROM adann0/balena-baseimage:armv7
+FROM arm32v7/debian:stretch
 
-RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+# RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+# 
 
 RUN echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list
 
@@ -94,7 +95,7 @@ RUN set -ex; \
 
 # bashbrew-architectures: amd64 arm64v8 ppc64le
 ENV MARIADB_MAJOR 10.3
-ENV MARIADB_VERSION 1:10.3.5
+ENV MARIADB_VERSION 1:10.3.14-1
 # release-status:RC
 # (https://downloads.mariadb.org/mariadb/+releases/)
 
