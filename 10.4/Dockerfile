@@ -1,9 +1,8 @@
 # vim:set ft=dockerfile:
 FROM arm32v7/debian:stretch
 
-# RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
-# 
-
+# Armv7 ;
+# https://packages.debian.org/sid/mariadb-server-10.3
 RUN echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
@@ -96,7 +95,7 @@ RUN set -ex; \
 # bashbrew-architectures: amd64 arm64v8 ppc64le
 ENV MARIADB_MAJOR 10.3
 ENV MARIADB_VERSION 1:10.3.14-1
-# release-status:RC
+# release-status:stable
 # (https://downloads.mariadb.org/mariadb/+releases/)
 
 RUN set -e;\
