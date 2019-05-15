@@ -1,5 +1,9 @@
 # vim:set ft=dockerfile:
-FROM ubuntu:bionic
+FROM adann0/balena-baseimage:armv7
+
+RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+
+RUN echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r mysql && useradd -r -g mysql mysql
@@ -89,8 +93,8 @@ RUN set -ex; \
 	apt-key list
 
 # bashbrew-architectures: amd64 arm64v8 ppc64le
-ENV MARIADB_MAJOR 10.4
-ENV MARIADB_VERSION 1:10.4.4+maria~bionic
+ENV MARIADB_MAJOR 10.3
+ENV MARIADB_VERSION 1:10.3.5
 # release-status:RC
 # (https://downloads.mariadb.org/mariadb/+releases/)
 
